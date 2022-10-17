@@ -1,3 +1,4 @@
+print('🔥 Positional and Keyword Arguments')
 # print(1, 2, 3, 5)
 # print(1, 3)
 # print()
