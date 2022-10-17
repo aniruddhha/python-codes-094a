@@ -1,6 +1,3 @@
-import re
-
-
 print('🔥 Static Typing')
 
 address: str = 'abc'
