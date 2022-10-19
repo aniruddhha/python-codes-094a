@@ -1,6 +1,5 @@
 from datetime import date
 
-
 class Device:
     def __init__(self) -> None:
         self.__id = 10
@@ -9,6 +8,8 @@ class Device:
         self.__id = new_id
 
 it: int = 10
+ab : str = 'abc'
+is_okay : bool = True
 dv: Device = Device()
 # print(dv.__id)
 # dv.kjkjgjghjgjgjgj = 10
