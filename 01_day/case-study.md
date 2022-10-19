@@ -3,8 +3,8 @@
     - 👉 Enter Admin Username
     - 👉 Enter Admin Password
 - 2. Customer
-    - 👉 Enter Admin Username
-    - 👉 Enter Admin Password
+    - 👉 Enter Customer Username
+    - 👉 Enter Customer Password
 - 3. Exit
 
 ### Admin Menu
