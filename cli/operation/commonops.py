@@ -1,0 +1,13 @@
+class CommonOperations:
+    
+    def check_balance(self):
+        ...
+    
+    def withdraw(self):
+        ...
+
+    def deposit(self):
+        ...
+
+    def transfer(self):
+        ...
