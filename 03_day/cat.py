@@ -1,3 +1,6 @@
+def create_cat():
+    return Cat()
+
 class Cat:
     # eyes = 2 # state
     # legs = 4
@@ -19,8 +22,10 @@ class Cat:
 
     def eat(self, is_fish: bool) -> None: 
          print('cat is eating')
+    
     def play(self) -> None: 
         print('cat is playing')
+    
     def sleep(self) -> None: 
         print('cat is sleeping')
 
