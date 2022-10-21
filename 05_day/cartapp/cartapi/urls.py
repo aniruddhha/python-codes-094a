@@ -4,7 +4,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from  .views import SimpleDemoView
 
 urlpatterns = [
-    path('get', SimpleDemoView.as_view()),
+    path('simple', SimpleDemoView.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

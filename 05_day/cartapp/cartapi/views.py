@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from datetime import datetime
+from .serializers import QuestionSerializer
 
 # Create your views here.
 
@@ -18,12 +19,11 @@ class SimpleDemoView(APIView):
 
     def post(self,request ,*args, **kwargs ):  # http POST
 
-        user_creds = request.data
-        user_creds['tm'] = datetime.today().strftime('%Y-%m-%d')
+        sz = QuestionSerializer(data = request.data)
 
-        return Response(user_creds, status.HTTP_201_CREATED)
+        if sz.is_valid():
+            sz.save()
+            return Response(question, status.HTTP_201_CREATED)
 
-    # def put(self,request ,*args, **kwargs ): ...
-
-    # def delete(self,request ,*args, **kwargs ) : ...
+        return Response({ 'sts' : 'fail', 'msg' : 'Invalid Data' })
 
