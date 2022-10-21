@@ -1,5 +1,8 @@
 class AdminOperations:
-    
+
+    def __init__(self):
+        ...
+
     def create_new_customer(self):
         ...
 

@@ -7,3 +7,7 @@ class AppInput:
     def amount(self, msg) -> int:
         amt: int = int(input(msg))
         return amt
+
+    def user_details(self, msg) -> str:
+        filed = input(msg)
+        return filed
