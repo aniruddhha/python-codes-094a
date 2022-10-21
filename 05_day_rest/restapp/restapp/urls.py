@@ -1,4 +1,4 @@
-"""cartapp URL Configuration
+"""restapp URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -15,10 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from cartapi import urls as cartapi_urls
 
 urlpatterns = [
+    path('', include('myapi.urls')),
     path('admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('cart/', include(cartapi_urls)),
+    path('api-auth/', include('rest_framework.urls'))
 ]
