@@ -73,7 +73,7 @@ class AppUserViewSet(viewsets.ModelViewSet):
     serializer_class = AppUserSerializer
     queryset = AppUser.objects.all()
 
-    @action(detail=False, methods=['post'], url_path=r'login')
+    @action(detail=True, methods=['post'], url_path=r'login')
     def check_creds(self, request):
         creds = request.data
 
