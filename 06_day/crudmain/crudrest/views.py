@@ -82,6 +82,14 @@ class AppUserViewSet(viewsets.ModelViewSet):
 
         return Response(sz.data)
 
+    @action(detail = False, method=['get'], url = r'startwith')
+    def find_all_start_with(self, request):
+        ...
+
+    @action(detail = False, method=['get'], url = r'between')
+    def find_all_between(self, request, st, ed):
+       ...
+
 
 
 
