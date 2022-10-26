@@ -1,6 +1,6 @@
-from re import A
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.decorators import action
 
 from django.utils import timezone
 
@@ -72,3 +72,16 @@ class AppUserDeatilsView(APIView):
 class AppUserViewSet(viewsets.ModelViewSet):
     serializer_class = AppUserSerializer
     queryset = AppUser.objects.all()
+
+    @action(detail=True, methods=['post'])
+    def check_creds(self, request):
+        creds = request.data
+
+        app_user = AppUser.objects.filter(email = creds['email'], last_name = creds['last_name'] ) 
+        sz = AppUserSerializer(app_user)
+
+        return Response(sz.data)
+
+
+
+
