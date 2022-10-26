@@ -13,7 +13,7 @@ class AppUserView(APIView):
     def get(self, request, *args, **kwargs): 
 
         users = AppUser.objects.all()
-        res_users = AppUserSerializer(users)
+        res_users = AppUserSerializer(users, many = True)
 
         return Response(res_users.data)
 
