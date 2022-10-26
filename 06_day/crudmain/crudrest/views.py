@@ -1,3 +1,4 @@
+from re import A
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -5,6 +6,8 @@ from django.utils import timezone
 
 from .models import AppUser
 from .serializers import AppUserSerializer
+
+from rest_framework import viewsets
 
 # Create your views here.
 
@@ -52,8 +55,6 @@ class AppUserView(APIView):
         app_user.delete()
 
         return Response({ 'sts' : 'success', 'msg' : 'user deleted successfully' })
-
-
 class AppUserDeatilsView(APIView):
     def get(self, request, id):
         app_user = AppUser.objects.get(id = id)
@@ -67,3 +68,7 @@ class AppUserDeatilsView(APIView):
         app_user.delete()
 
         return Response({ 'sts' : 'success', 'msg' : 'user deleted successfully' })    
+
+class AppUserViewSet(viewsets.ModelViewSet):
+    serializer_class = AppUserSerializer
+    queryset = AppUser.objects.all()
