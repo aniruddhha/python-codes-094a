@@ -54,3 +54,16 @@ class AppUserView(APIView):
         return Response({ 'sts' : 'success', 'msg' : 'user deleted successfully' })
 
 
+class AppUserDeatilsView(APIView):
+    def get(self, request, id):
+        app_user = AppUser.objects.get(id = id)
+        res_user = AppUserSerializer(app_user)
+
+        return Response(res_user.data)
+
+    def delete(self, request, id): 
+
+        app_user = AppUser.objects.get(id = id)
+        app_user.delete()
+
+        return Response({ 'sts' : 'success', 'msg' : 'user deleted successfully' })    
