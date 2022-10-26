@@ -1,6 +1,5 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
 
 from django.utils import timezone
 
@@ -10,6 +9,7 @@ from .serializers import AppUserSerializer
 # Create your views here.
 
 class AppUserView(APIView):
+
     def get(self, request, *args, **kwargs): 
 
         users = AppUser.objects.all()
@@ -44,4 +44,13 @@ class AppUserView(APIView):
         return Response({ 'sts' : 'success', 'msg' : 'user updated successfully' })
 
 
-    def delete(self, request): ...
+    def delete(self, request): 
+
+        user_id = request.data['id']
+
+        app_user = AppUser.objects.get(id = user_id)
+        app_user.delete()
+
+        return Response({ 'sts' : 'success', 'msg' : 'user deleted successfully' })
+
+
