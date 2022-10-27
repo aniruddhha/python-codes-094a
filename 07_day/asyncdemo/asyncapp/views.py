@@ -17,7 +17,7 @@ class IndentifyMeViewSet(viewsets.ModelViewSet):
      serializer_class = SmsSerializer
 
      @action(detail=False,  methods=['get'], url_path=r'img')
-     def identify_me(self, request):
+     def identify_me(self, request, pk):
           human_detection_task.delay("img.png")
           return Response('Success')
           
