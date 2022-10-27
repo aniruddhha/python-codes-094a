@@ -50,15 +50,15 @@ class AppUserView(APIView):
 
         return Response({ 'sts' : 'success', 'msg' : 'user updated successfully' })
 
-
     def delete(self, request): 
-
+    
         user_id = request.data['id']
 
         app_user = AppUser.objects.get(id = user_id)
         app_user.delete()
 
         return Response({ 'sts' : 'success', 'msg' : 'user deleted successfully' })
+
 class AppUserDeatilsView(APIView):
     def get(self, request, id):
         app_user = AppUser.objects.get(id = id)
@@ -77,10 +77,11 @@ class AppUserViewSet(viewsets.ModelViewSet):
     serializer_class = AppUserSerializer
     queryset = AppUser.objects.all()
 
+    #dispatch : https://medium.com/@hassanraza/what-is-dispatch-used-for-in-django-c29af0653e94#:~:text=The%20dispatch%20method%20takes%20in,middleman%20between%20requests%20and%20responses.
     #caching : https://tute.io/how-to-cache-django-rest-framework-with-redis
     @method_decorator(vary_on_cookie)
     @method_decorator(cache_page(60*60))
-    def dispatch(self, *args, **kwargs):
+    def dispatch(self, request, *args, **kwargs):
         return super(AppUserViewSet, self).dispatch(*args, **kwargs)
 
     @action(detail=True,  methods=['post'], url_path=r'login')
