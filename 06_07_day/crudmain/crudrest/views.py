@@ -9,6 +9,10 @@ from .serializers import AppUserSerializer
 
 from rest_framework import viewsets
 
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
+from django.views.decorators.vary import vary_on_cookie
+
 # Create your views here.
 
 class AppUserView(APIView):
@@ -73,6 +77,12 @@ class AppUserViewSet(viewsets.ModelViewSet):
     serializer_class = AppUserSerializer
     queryset = AppUser.objects.all()
 
+    #caching : https://tute.io/how-to-cache-django-rest-framework-with-redis
+    @method_decorator(vary_on_cookie)
+    @method_decorator(cache_page(60*60))
+    def dispatch(self, *args, **kwargs):
+        return super(AppUserViewSet, self).dispatch(*args, **kwargs)
+
     @action(detail=True,  methods=['post'], url_path=r'login')
     def check_creds(self, request, pk = None):
         creds = request.data
@@ -84,7 +94,7 @@ class AppUserViewSet(viewsets.ModelViewSet):
 
     @action(detail = False, methods=['get'], url_path = r'startwith')
     def find_all_start_with(self, request):
-        ...
+      ...
 
     @action(detail = False, methods=['get'], url_path = r'between')
     def find_all_between(self, request, st, ed):
