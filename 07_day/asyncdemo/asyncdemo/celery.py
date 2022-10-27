@@ -1,3 +1,5 @@
+
+# https://realpython.com/asynchronous-tasks-with-django-and-celery/
 import os
 from celery import Celery
 
