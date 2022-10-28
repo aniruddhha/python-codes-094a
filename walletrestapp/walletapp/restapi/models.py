@@ -10,4 +10,4 @@ class AppUser(models.Model):
     txn_dt = models.DateTimeField()
     is_active = models.BooleanField(False)
     is_blocked = models.BooleanField(False)
-    created = models.BooleanField(False)
+    created = models.DateTimeField()

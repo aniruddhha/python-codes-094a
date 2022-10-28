@@ -10,9 +10,3 @@ class AppUserSerializer(serializers.ModelSerializer):
         # modify this function for validations
         # raise value errors
         return data
-
-    def create(self, validated_data):
-        """
-        Create and return a new `Snippet` instance, given the validated data.
-        """
-        return AppUser.objects.create(**validated_data)

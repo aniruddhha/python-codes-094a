@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
-from django.utils import timezone
+from django.utils import timezone, dateformat
 
 from .models import (
     AppUser
@@ -29,17 +29,17 @@ class WalletViewSet(viewsets.ModelViewSet):
 
         new_balance = existing_bal + dt['balance']
         app_user.balance = new_balance
-        app_user.txn_dt = timezone.now()
-        # app_user.save()
+        app_user.txn_dt = dateformat.format(timezone.now(), 'Y-m-d')
+        app_user.created = dateformat.format(app_user.created, 'Y-m-d')
+        print(app_user)
         
-        sz = AppUserSerializer(app_user)
-        print(sz.data)
-
+        sz = AppUserSerializer(data = app_user.__dict__)
+        
         if sz.is_valid():
             sz.save()
             return Response({ 'sts' : 'success', 'msg' : 'amount deposited' })
-        
-        return Response({ 'sts' : 'error', 'msg' : 'problem in depositing amount' })
-        # return Response({ 'sts' : 'success', 'msg' : 'amount deposited' })
+        print(sz.errors)
+        print(sz.data)
+        return Response(sz.errors)
 
      
