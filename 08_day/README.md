@@ -3,3 +3,6 @@
 - create table
 - insert
 - select
+- drop table
+- delete table
+- constraints
