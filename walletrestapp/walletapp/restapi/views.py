@@ -30,17 +30,16 @@ class WalletViewSet(viewsets.ModelViewSet):
         new_balance = existing_bal + dt['balance']
         app_user.balance = new_balance
         app_user.txn_dt = timezone.now()
-        app_user.save()
+        # app_user.save()
         
-        # sz = AppUserSerializer(data=app_user)
-        # print(f'Is Valid {sz.is_valid()}')
-        # print(sz.data)
+        sz = AppUserSerializer(app_user)
+        print(sz.data)
 
-        # if sz.is_valid():
-            # sz.save()
-            # return Response({ 'sts' : 'success', 'msg' : 'amount deposited' })
+        if sz.is_valid():
+            sz.save()
+            return Response({ 'sts' : 'success', 'msg' : 'amount deposited' })
         
-        # return Response({ 'sts' : 'error', 'msg' : 'problem in depositing amount' })
-        return Response({ 'sts' : 'success', 'msg' : 'amount deposited' })
+        return Response({ 'sts' : 'error', 'msg' : 'problem in depositing amount' })
+        # return Response({ 'sts' : 'success', 'msg' : 'amount deposited' })
 
      
