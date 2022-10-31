@@ -111,5 +111,5 @@ from artists a
 where not exists ( -- query in where clause
     select * 
     from sales s
-    where s.sl_id = a.art_id
+    where s.art_id = a.art_id
 );
