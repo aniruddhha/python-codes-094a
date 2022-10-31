@@ -62,7 +62,7 @@ insert into sales values(3, '2015-01-01', 110, 3, 2, 1);
 select pt_nm, pt_price 
 from paintings 
 where pt_price > (
-    select avg(pt_price) 
+    select avg(pt_price) -- only one column, value or row
     from paintings
 );
 
