@@ -1,0 +1,3 @@
+-- Select all the products with a price between $60 and $120.
+-- Select all the data from the products, including all the data for each product's manufacturer.
+-- Select the average price of each manufacturer's products, showing the manufacturer's name.

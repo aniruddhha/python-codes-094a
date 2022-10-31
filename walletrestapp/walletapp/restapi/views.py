@@ -1,3 +1,4 @@
+from functools import partial
 from rest_framework import viewsets
 
 from rest_framework.response import Response
@@ -33,7 +34,11 @@ class WalletViewSet(viewsets.ModelViewSet):
         app_user.created = dateformat.format(app_user.created, 'Y-m-d')
         print(app_user)
         
-        sz = AppUserSerializer(data = app_user.__dict__)
+        sz = AppUserSerializer(
+            app_user,
+            data = app_user.__dict__, 
+            partial = True
+        )
         
         if sz.is_valid():
             sz.save()
