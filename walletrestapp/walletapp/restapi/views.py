@@ -31,7 +31,7 @@ class WalletViewSet(viewsets.ModelViewSet):
         new_balance = existing_bal + dt['balance']
         app_user.balance = new_balance
         app_user.txn_dt = dateformat.format(timezone.now(), 'Y-m-d')
-        app_user.created = dateformat.format(app_user.created, 'Y-m-d')
+        # app_user.created = dateformat.format(app_user.created, 'Y-m-d')
         print(app_user)
         
         sz = AppUserSerializer(
