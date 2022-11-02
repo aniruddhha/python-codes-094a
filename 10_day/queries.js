@@ -41,7 +41,22 @@ db.items.updateOne(
     { _id : ObjectId("63620309a37a09d0505b937f") },
     { 
         $set : { 
-            dept : 'eng' 
+            dept : 'marketing' 
+        },
+        $currentDate : {
+            lastModified : true
         }
+    }
+)
+
+db.items.deleteOne(
+    { _id : 67}
+)
+
+db.items.deleteMany(
+    { 
+        price : { 
+            $gte : 20 
+        } 
     }
 )
