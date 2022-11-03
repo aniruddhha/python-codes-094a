@@ -1,8 +1,7 @@
 const day = 2
 
-
 function checkUsingIfElse() {
-    if(day == 1) {
+    if (day == 1) {
         console.log('mon')
     }
     else if (day == 2) {
@@ -11,31 +10,29 @@ function checkUsingIfElse() {
     else if (day == 3) {
         console.log('wed')
     }
-    else {
-        console.log('sun')
-    }
-    
+    else console.log('sun')
+
 }
 
 function checkUsingSwitchCase() {
-    switch(day) {
+    switch (day) {
 
-        case 1 : {
+        case 1: {
             console.log('mon')
             break
         }
-        case 2 : {
+        case 2: {
             console.log('tue')
             break
         }
-        case 3 : {
+        case 3: {
             console.log('wed')
             break
         }
-        default : {
+        default: {
             console.log('sun')
         }
-    
+
     }
 }
 
