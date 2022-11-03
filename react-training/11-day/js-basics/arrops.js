@@ -16,3 +16,11 @@ function givePosition(nm) {
 
 console.log(`Position is ${givePosition('pqr')}`)
 console.log(`Position is ${givePosition('kjfdhjk')}`)
+
+// uppercase the name at given position
+// ip : 2
+// [abc, PQR, xyz, lmn]
+
+const pos = givePosition('pqr') - 1
+names[pos] = names[pos].toUpperCase()
+console.log(names)
