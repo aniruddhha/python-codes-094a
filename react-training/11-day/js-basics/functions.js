@@ -5,9 +5,13 @@ function details(id) { // Named Function
 }
 details(12)
 
+const onDt = details
+onDt()
+
 const onDeatils = function() { // anonymus function
     console.log(`Anonymous Function`)
 }
+console.log(onDeatils)
 onDeatils()
 
 const makeSqaure = (num) => num * num // fat arrow -> lambda
