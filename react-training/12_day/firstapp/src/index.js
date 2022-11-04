@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css'
 
+import { MagicBoxCls, MagicBoxFn  } from './magicbox'
+
 const dv = document.getElementById('root')
 
 const root = ReactDOM.createRoot(dv);
@@ -27,19 +29,34 @@ const root = ReactDOM.createRoot(dv);
  * 
  */
 
-let col = 'red'
-const onClk = () =>  {
-  col = 'yellow'
-  console.log(col)
-}
+// let col = 'red'
+// const onClk = () =>  {
+//   col = 'yellow'
+//   console.log(col)
+// }
 
-const boxColorUi = <div>
-  <div className='box' style={{backgroundColor : col}}></div>
-  {/* <input type='button' value='Okay' onClick={() => console.log('clicked')}/> */}
-  <input type='button' value='Okay' onClick={onClk}/>
-</div>
+// const boxColorUi = <div>
+//   <div className='box' style={{backgroundColor : col}}></div>
+//   {/* <input type='button' value='Okay' onClick={() => console.log('clicked')}/> */}
+//   <input type='button' value='Okay' onClick={onClk}/>
+// </div>
 
 
-root.render(boxColorUi);
+root.render(
+  <div>
+    <div>
+      <MagicBoxFn />
+    </div>
+    <div>
+      <MagicBoxFn />
+    </div>
+    <div>
+      <MagicBoxFn />
+    </div>
+    <div>
+      <MagicBoxCls />
+    </div>
+  </div>
+);
 
 
