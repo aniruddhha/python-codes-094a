@@ -4,6 +4,7 @@ import { Box } from './box';
 import { Calc } from './calc';
 import { FontMgr } from './fontmgr';
 import './index.css'
+import { ListDemo } from './listdemo';
 
 import { MagicBoxCls, MagicBoxFn  } from './magicbox'
 
@@ -46,7 +47,7 @@ const root = ReactDOM.createRoot(dv);
 
 
 root.render(
-  <Calc/>
+  <ListDemo/>
 );
 
 
