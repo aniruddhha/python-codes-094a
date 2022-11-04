@@ -12,7 +12,7 @@ export function ListDemo() {
     ])
 
     const ui = () => {
-        let strs = []
+        const strs = []
         for(let i = 0; i< names.length; i++) {
            strs.push(<li>{names[i]}</li>)
         }
