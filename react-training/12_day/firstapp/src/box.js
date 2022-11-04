@@ -12,8 +12,9 @@ export function Box() {
     const onClk = () => {
         // col = 'yellow' // until u re-render, i will not update it
         console.log(col)
-
-        setCol('yellow') // component rerenders
+       // component rerenders
+        if(col == 'yellow') setCol('red')
+        else  setCol('yellow') 
     }
 
     return (

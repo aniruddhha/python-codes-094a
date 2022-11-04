@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Box } from './box';
+import { FontMgr } from './fontmgr';
 import './index.css'
 
 import { MagicBoxCls, MagicBoxFn  } from './magicbox'
@@ -36,7 +37,7 @@ const root = ReactDOM.createRoot(dv);
 //   console.log(col)
 // }
 
-// const boxColorUi = <div>
+// const boxColorUi = <div  >
 //   <div className='box' style={{backgroundColor : col}}></div>
 //   {/* <input type='button' value='Okay' onClick={() => console.log('clicked')}/> */}
 //   <input type='button' value='Okay' onClick={onClk}/>
@@ -44,7 +45,7 @@ const root = ReactDOM.createRoot(dv);
 
 
 root.render(
-  <Box/>
+  <FontMgr/>
 );
 
 
