@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Box } from './box';
 import './index.css'
 
 import { MagicBoxCls, MagicBoxFn  } from './magicbox'
@@ -43,20 +44,7 @@ const root = ReactDOM.createRoot(dv);
 
 
 root.render(
-  <div>
-    <div>
-      <MagicBoxFn />
-    </div>
-    <div>
-      <MagicBoxFn />
-    </div>
-    <div>
-      <MagicBoxFn />
-    </div>
-    <div>
-      <MagicBoxCls />
-    </div>
-  </div>
+  <Box/>
 );
 
 

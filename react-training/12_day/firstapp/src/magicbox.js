@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function MagicBoxFn() {
+export function MagicBoxFn() { // 16.8 -> hooks -> immutable
 
     return (
         <div>
@@ -9,7 +9,7 @@ export function MagicBoxFn() {
     )
 }
 
-export class MagicBoxCls extends React.Component {
+export class MagicBoxCls extends React.Component { // 16.8
 
     render() {
         return (
