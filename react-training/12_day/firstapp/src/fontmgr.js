@@ -1,4 +1,5 @@
 import { useState } from "react"
+import  React from 'react'
 
 export function FontMgr() {
 
@@ -13,13 +14,13 @@ export function FontMgr() {
     }
 
     return (
-        <div>
+        <>
             <p style={{fontSize : sz + 'px'}}> Welcome to React </p>
             <div>
                 <input type='button' value="Dec" onClick={onDec}/>
                 <input type='button' value="Inc" onClick={onInc}/>
             </div>
-        </div>
+        </>
     )
 }
 

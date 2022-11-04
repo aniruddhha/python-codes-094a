@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Box } from './box';
+import { Calc } from './calc';
 import { FontMgr } from './fontmgr';
 import './index.css'
 
@@ -45,7 +46,7 @@ const root = ReactDOM.createRoot(dv);
 
 
 root.render(
-  <FontMgr/>
+  <Calc/>
 );
 
 
