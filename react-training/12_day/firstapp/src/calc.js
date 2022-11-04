@@ -4,31 +4,34 @@ export function Calc() {
 
     const [num1, setNum1] = useState(0)
     const [num2, setNum2] = useState(0)
+    const [res, setRes] = useState(0)
 
     const onNum1Change = (e) => {
-        console.log(e.target.value)
-        setNum1(e.target.value)
+        const n1 = Number.parseInt(e.target.value)
+        if(isNaN(n1) ) setNum1(0)
+        else setNum1(n1)
     }
     const onNum2Change = (e) => {
-        console.log(e.target.value)
-        setNum2(e.target.value)
+        const n2 = Number.parseInt(e.target.value)
+        if(isNaN(n2) ) setNum2(0)
+        else setNum2(n2)
     }
 
     const onAdd = () => {
-        console.log(num1 + num2)
+       setRes(num1 + num2)
     }
-    const onSub = () => {}
-    const onMul = () => {}
-    const onDiv = () => {}
+    const onSub = () => setRes(num1 - num2)
+    const onMul = () =>  setRes(num1 * num2)
+    const onDiv = () =>  setRes(num1 / num2)
 
     return (
         <>
             <div>
-                <h1>Result Is </h1>
+                <h1>Result Is {res}</h1>
             </div>
             <div>
-                <input type='text' placeholder="Number 1" onChange={onNum1Change}/>
-                <input type='text' placeholder="Number 2" onChange={onNum2Change}/>
+                <input type='number' placeholder="Number 1" onChange={onNum1Change}/>
+                <input type='number' placeholder="Number 2" onChange={onNum2Change}/>
             </div>
             <div>
                 <input type='button' value='Add' onClick={onAdd}/>
