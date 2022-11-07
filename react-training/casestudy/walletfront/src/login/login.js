@@ -6,16 +6,18 @@ export function Login() {
 
     return (
         <div className={styles.mainDiv}>
-            <h2>Login</h2>
-            <h5>Sign In to Continue</h5>
-            <h4>Welcome Ecommerce Wallet</h4>  
-            <div>
+            <span className={styles.ttl}>Login</span>
+            <span className={styles.txt}>Sign In to Continue</span>
+            
+            <div className={styles.uipDv}>
+                <label className={styles.txt}>UserName</label>
                 <input type='text' placeholder='Username'/>
             </div>
-            <div>
-            <input type='text' placeholder='Password'/>
+            <div className={styles.uipDv}>
+                <label className={styles.txt}>Password</label>
+                <input type='text' placeholder='Password'/>
             </div>
-            <input type='button' value='Login'/>
+            <input className={styles.btnLgn} type='button' value='Login'/>
         </div>
     )
 }

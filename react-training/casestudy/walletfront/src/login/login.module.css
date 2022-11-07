@@ -6,3 +6,19 @@
     justify-content: center;
     align-items: center;
 }
+.ttl {
+    font-size: 50px;
+}
+.txt {
+    color: grey;
+    font-size: 14px;
+}
+
+.uipDv {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+}
+.btnLgn {
+    margin-top: 16px;
+}
