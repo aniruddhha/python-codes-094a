@@ -17,6 +17,8 @@ export function Car(props) {
 
 export function Item({ ag, sal }) {
 
+    ag = 90
+    
     return (
         <>
             <h1> Age {ag} </h1>
