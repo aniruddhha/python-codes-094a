@@ -48,3 +48,18 @@ export function Menu() {
         </>
     )
 }
+
+const arr = [2, 3, 5]
+
+const resArr = []
+for(let i = 0; i<arr.length; i++) {
+    resArr.push(arr[i] * arr[i])
+}
+
+console.log(arr)
+console.log(resArr)
+
+const nwArr = arr.map( el => el * el )
+console.log(nwArr)
+const nwFlt = arr.filter( el => el > 2)
+console.log(nwFlt)
