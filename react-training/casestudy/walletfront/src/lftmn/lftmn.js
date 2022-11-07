@@ -2,8 +2,6 @@ import sty from './lftmn.module.css'
 
 export function LftMn() {
 
-
-
     return (
         <div className={sty.mn}>
             <a href='#'> Deposit </a>
