@@ -2,7 +2,7 @@ import { useState } from "react"
 
 export function Menu() {
 
-    const [isMob, setMob] = useState(false)
+    const [isMob, setMob] = useState(true)
 
     const menu = isMob ? (
         <ul>
@@ -40,7 +40,11 @@ export function Menu() {
 
     return (
         <>
-            {ui}
+           {
+            isMob && (
+                <input type='button' value='Okay'/>
+            )
+           }
         </>
     )
 }
