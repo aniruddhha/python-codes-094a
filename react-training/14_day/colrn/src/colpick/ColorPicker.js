@@ -6,9 +6,9 @@ import { useState } from 'react'
 export function ColorDisplay({ col }) {
     console.log(col)
     return (
-        <div 
-            className={sty.colDv} 
-            style = {{ backgroundColor :  col }}> 
+        <div
+            className={sty.colDv}
+            style={{ backgroundColor: col }}>
         </div>
     )
 }
@@ -19,14 +19,14 @@ export function FancyLabel(props) {
     )
 }
 
-export function ColorRange({ ttl, onCh }) {
+export function ColorRange({ ttl, onCh, hd }) {
 
     // const onRedChanged = (e) => arr[1](Number.parseInt(e.target.value))
 
     return (
         <div className={sty.mr}>
-            <FancyLabel txt={ttl}/> 
-            <input type='range'  min={0} max={255} onChange={onCh}/> 
+            <FancyLabel txt={ttl} />
+            <input type='range' min={0} max={255} onChange={onCh} value={hd}/>{hd}
         </div>
     )
 }
@@ -41,15 +41,34 @@ export function ColorPicker() {
     const onGreenChanged = (e) => setGreen(Number.parseInt(e.target.value))
     const onBlueChanged = (e) => setBlue(Number.parseInt(e.target.value))
 
-    return(
+    return (
         <div className={sty.cont}>
-           
-            <ColorDisplay col={`rgb(${arr[0]}, ${green}, ${blue})`}/>
-            <ColorRange ttl='red' onCh={onRedChanged}/>
-            <ColorRange ttl='green' onCh={onGreenChanged}/>
-            <ColorRange ttl='blue' onCh={onBlueChanged}/>
-            
-            {/* <div className={sty.mr}>
+
+            <ColorDisplay 
+                col={`rgb(${arr[0]}, ${green}, ${blue})`} />
+
+            <ColorRange 
+                ttl='red' 
+                onCh={onRedChanged} 
+                hd={arr[0]}/>
+
+            <ColorRange 
+                ttl='green' 
+                onCh={onGreenChanged} 
+                hd={green}/>
+
+            <ColorRange 
+                ttl='blue' 
+                onCh={onBlueChanged} 
+                hd={blue}/>
+
+            {
+
+                /*<div 
+                    className={sty.colDv} 
+                    style = {{ backgroundColor :  `rgb(${arr[0]}, ${green}, ${blue})` }}> 
+                </div>
+             <div className={sty.mr}>
                 Red <input type='range' onChange={onRedChanged}  min={0} max={255} value={arr[0]}/> {arr[0]}
             </div>
             <div className={sty.mr}>
