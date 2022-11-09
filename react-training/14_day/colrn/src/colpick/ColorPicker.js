@@ -3,11 +3,30 @@ import sty from './ColorPicker.module.css'
 import { useState } from 'react'
 
 
-export function ColorRange({ col }) {
+export function ColorDisplay({ col }) {
+    console.log(col)
+    return (
+        <div 
+            className={sty.colDv} 
+            style = {{ backgroundColor :  col }}> 
+        </div>
+    )
+}
+
+export function FancyLabel(props) {
+    return (
+        <strong>{props.txt}</strong>
+    )
+}
+
+export function ColorRange({ ttl, onCh }) {
+
+    // const onRedChanged = (e) => arr[1](Number.parseInt(e.target.value))
 
     return (
         <div className={sty.mr}>
-            {col} <input type='range'  min={0} max={255}/> 
+            <FancyLabel txt={ttl}/> 
+            <input type='range'  min={0} max={255} onChange={onCh}/> 
         </div>
     )
 }
@@ -18,18 +37,17 @@ export function ColorPicker() {
     const [green, setGreen] = useState(0)
     const [blue, setBlue] = useState(0)
 
-    const onRedChanged = (e) => {
-        arr[1](Number.parseInt(e.target.value))
-    }
+    const onRedChanged = (e) => arr[1](Number.parseInt(e.target.value))
     const onGreenChanged = (e) => setGreen(Number.parseInt(e.target.value))
     const onBlueChanged = (e) => setBlue(Number.parseInt(e.target.value))
 
     return(
         <div className={sty.cont}>
            
-            <ColorRange col='red'/>
-            <ColorRange col='green'/>
-            <ColorRange col='blue'/>
+            <ColorDisplay col={`rgb(${arr[0]}, ${green}, ${blue})`}/>
+            <ColorRange ttl='red' onCh={onRedChanged}/>
+            <ColorRange ttl='green' onCh={onGreenChanged}/>
+            <ColorRange ttl='blue' onCh={onBlueChanged}/>
             
             {/* <div className={sty.mr}>
                 Red <input type='range' onChange={onRedChanged}  min={0} max={255} value={arr[0]}/> {arr[0]}
