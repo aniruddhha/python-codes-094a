@@ -1,0 +1,21 @@
+.cont {
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.colDv {
+    width: 30%;
+    height: 30%;
+
+    background-color: black;
+}
+.mr {
+    margin-top: 16px;
+}
