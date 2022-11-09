@@ -8,13 +8,16 @@
 
     justify-content: center;
     align-items: center;
+
+    margin: 30px;
 }
 
 .colDv {
     width: 30%;
     height: 30%;
 
-    background-color: black;
+    /* background-color: rgb(255,0,0); */
+    background-color: red;
 }
 .mr {
     margin-top: 16px;
