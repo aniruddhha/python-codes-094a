@@ -10,6 +10,8 @@ export function UsEf() {
 
     const [st, setSt] = useState(0)
     const [ab, setAb] = useState(0)
+    const [wd, setWd] = useState(0)
+    const [ht, setHt] = useState(0)
 
     const onCl = () => setSt(st + 1)
 
@@ -26,9 +28,29 @@ export function UsEf() {
     useEffect(() => {
         console.log('I would be getting called only if ab changes')
     }, [ab])
+
+    useEffect( () => {
+
+        function onResize() {
+            setWd(window.innerWidth)
+            setHt(window.innerHeight)
+        }
+
+        window.addEventListener('resize', onResize)
+
+        return () => {
+            // cleanup
+            window.removeEventListener('resize')
+        }
+
+    } )
    
     return (
         <>
+            <div>
+                <h1>Width {wd}</h1>
+                <h1>Height {ht}</h1>
+            </div>
             <input type='button' value='Okay' onClick={onCl}/>
             <input type='button' value='Ab' onClick={onAb}/>
         </>
