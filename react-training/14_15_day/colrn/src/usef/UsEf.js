@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useFetch } from './custhk'
 
 export function UsEf() {
 
@@ -72,6 +73,10 @@ export function UsEf() {
         console.log(prm)
 
     }, [])
+
+    console.log('Custom Hook Response is ')
+    const dt = useFetch('https://reqres.in/api/users/2')
+    console.log(dt)
 
     return (
         <>
