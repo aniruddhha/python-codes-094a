@@ -38,7 +38,8 @@ export function App() {
 
     }, [])
 
-    const ui = dt ? <TodoList dt={dt}/> : <h1> Waiting for data from server</h1>
+    if(!dt) return <h1> Waiting for data from server</h1>
+    if(!dt.length) return <h1> No data available </h1>
 
-    return ui
+    return <TodoList dt={dt}/>
 }
