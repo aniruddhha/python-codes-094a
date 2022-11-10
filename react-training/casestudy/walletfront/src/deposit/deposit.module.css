@@ -1,0 +1,17 @@
+
+.bigIp{
+    font-size: 16pt;
+    width: 300px;
+}
+.cont {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+}
+.txtFlt {
+    color: gray;
+}
+
+.btn {
+    
+}

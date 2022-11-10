@@ -1,5 +1,6 @@
 import {AppNav} from '../nav/nav'
 import { LftMn } from '../lftmn/lftmn'
+import { Deposit } from '../deposit/deposit'
 
 import sty from './dash.module.css'
 
@@ -12,7 +13,9 @@ export function Dash() {
                 <div className={sty.dvLftMn}>
                     <LftMn/>
                 </div>
-                <div className={sty.dvMnCnt}></div>
+                <div className={sty.dvMnCnt}>
+                    <Deposit/>
+                </div>
             </div>
         </>
     )

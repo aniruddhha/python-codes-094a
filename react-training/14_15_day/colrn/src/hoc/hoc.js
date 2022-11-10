@@ -2,23 +2,33 @@ import { Component, useEffect, useState } from "react"
 
 // fn = Component => Enhanced Component
 
-const withConditional = Component => (props) => { 
+const withConditional = (Component) => {
+    return (props) => {
 
-    if(!props.dt) return <h1> Waiting for data from server</h1>
-    if(!props.dt.length) return <h1> No data available </h1>
+        if (!props.dt) return <h1> Waiting for data from server</h1>
+        if (!props.dt.length) return <h1> No data available </h1>
 
-    return <Component {...props}/> 
+        return <Component {...props} />
+    }
 }
 
-const TodoList = withConditional(BaseTodoList)
+const TodoList = withConditional(BaseTodoList) // <Component {...props} />
 
-export function ToDoListItem({ task, isComplete }) {
+const TodoList1 = (props) => {
+
+    if (!props.dt) return <h1> Waiting for data from server</h1>
+    if (!props.dt.length) return <h1> No data available </h1>
+
+    return <Component {...props} />
+}
+
+export const ToDoListItem = ({ task, isComplete }) => {
     return (
         <li> {task}  {isComplete ? '✅' : '❌'}  </li>
     )
 }
 
-export function BaseTodoList({ dt }) {
+export const BaseTodoList = ({ dt }) => {
 
     // const fullList = dt.map(el => <ToDoListItem task={el.task} isComplete={el.isComplete} />)
     // const fullList = dt.map(el => <ToDoListItem {...el} />)
@@ -45,10 +55,14 @@ export function App() {
                 { id: 4, task: 'nmt', isComplete: 1 },
                 { id: 5, task: 'crt', isComplete: 1 }
             ])
+
         }, 3000)
 
 
     }, [])
 
-    return <TodoList dt={dt}/>
+    // if(!dt) return <h1> Waiting for data from server</h1>
+    // if(!dt.length) return <h1> No data available </h1>
+
+    return <TodoList dt={dt} />
 }
