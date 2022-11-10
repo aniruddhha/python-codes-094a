@@ -1,4 +1,16 @@
-import { useEffect, useState } from "react"
+import { Component, useEffect, useState } from "react"
+
+// fn = Component => Enhanced Component
+
+const withConditional = Component => (props) => { 
+
+    if(!props.dt) return <h1> Waiting for data from server</h1>
+    if(!props.dt.length) return <h1> No data available </h1>
+
+    return <Component {...props}/> 
+}
+
+const TodoList = withConditional(BaseTodoList)
 
 export function ToDoListItem({ task, isComplete }) {
     return (
@@ -6,19 +18,19 @@ export function ToDoListItem({ task, isComplete }) {
     )
 }
 
-export function TodoList({ dt }) {
+export function BaseTodoList({ dt }) {
 
-    const fullList = dt.map(el => <ToDoListItem task={el.task} isComplete={el.isComplete} />)
+    // const fullList = dt.map(el => <ToDoListItem task={el.task} isComplete={el.isComplete} />)
+    // const fullList = dt.map(el => <ToDoListItem {...el} />)
 
     return (
         <ul>
-            {fullList}
+            {dt.map(el => <ToDoListItem {...el} />)}
         </ul>
     )
 }
 
 export function App() {
-
 
     const [dt, setDt] = useState(undefined)
 
@@ -37,9 +49,6 @@ export function App() {
 
 
     }, [])
-
-    if(!dt) return <h1> Waiting for data from server</h1>
-    if(!dt.length) return <h1> No data available </h1>
 
     return <TodoList dt={dt}/>
 }
