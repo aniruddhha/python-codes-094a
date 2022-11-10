@@ -3,15 +3,29 @@
     font-size: 16pt;
     width: 300px;
 }
-.cont {
-    margin-top: 16px;
+.ipCont {
     display: flex;
     flex-direction: column;
+    width: 30%;
+}
+.btnCont {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }
 .txtFlt {
     color: gray;
 }
 
 .btn {
-    
+    height: 100%;
+    width: 200px;
+    font-size: 16pt;
+}
+
+.mnCont {
+    display: flex;
+    margin-top: 2em;
 }
