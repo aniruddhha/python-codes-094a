@@ -1,10 +1,10 @@
-import sty from './deposit.module.css'
+import sty from './withdraw.module.css'
 
-export function Deposit() {
+export function Withdraw() {
 
     return (
         <>
-            <h1> DEPOSIT </h1>
+            <h1> WITHDRAW </h1>
             <hr />
 
             <div className={sty.mnCont}>
@@ -13,7 +13,7 @@ export function Deposit() {
                     <input className={sty.bigIp} type='number' placeholder='Amount' /> 
                 </div>
                 <div className={sty.btnCont}>
-                     <input className={sty.btn} type='button' value='DEPOSIT' /> 
+                     <input className={sty.btn} type='button' value='WITHDRAW' /> 
                 </div>
             </div>
         </>

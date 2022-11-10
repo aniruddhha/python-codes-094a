@@ -1,0 +1,14 @@
+
+
+.mnCont {
+    display: flex;
+    margin-top: 2em;
+}
+
+table {
+    width: 30%;
+    font-size: 1.3em;
+}
+td {
+    padding-top: 16px;
+}
