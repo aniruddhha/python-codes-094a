@@ -5,13 +5,13 @@ export function CtxParent() {
 
     const [cnt, setCnt] = useState(0)
 
-    const obj = { 
+    const ctxObj = { // global state
         dt : cnt,
         onInc : () => setCnt(cnt + 1)
     }
 
     return (
-        <AppCtx.Provider value={obj}>
+        <AppCtx.Provider value={ctxObj}>
             <div>
                 <ACtx/>
             </div>
