@@ -11,11 +11,11 @@ export function Login() {
             
             <div className={styles.uipDv}>
                 <label className={styles.txt}>UserName</label>
-                <input type='text' placeholder='Username'/>
+                <input className={styles.bigIp} type='text' placeholder='Username'/>
             </div>
             <div className={styles.uipDv}>
                 <label className={styles.txt}>Password</label>
-                <input type='text' placeholder='Password'/>
+                <input className={styles.bigIp} type='text' placeholder='Password'/>
             </div>
             <input className={styles.btnLgn} type='button' value='Login'/>
         </div>

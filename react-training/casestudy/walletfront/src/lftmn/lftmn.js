@@ -2,12 +2,19 @@ import sty from './lftmn.module.css'
 
 export function LftMn() {
 
+    const customerMenuItems = [ 
+        { ttl : 'Balance', url : '' },
+        { ttl : 'Deposit', url : '' }, 
+        { ttl : 'Withdraw', url : '' }, 
+        { ttl : 'Transfer', url : '' }, 
+        { ttl : 'Logout', url : '' }, 
+    ]
+
+    const customerMenu = customerMenuItems.map( itm => <a href='#'>{itm.ttl}</a> )
+
     return (
         <div className={sty.mn}>
-            <a href='#'> Deposit </a>
-            <a href='#'> Withdraw </a>
-            <a href='#'> Balance </a>
-            <a href='#'> Transfer </a>
+           {customerMenu}
         </div>
     )
 }

@@ -29,3 +29,9 @@ export function Modal() {
         </div>
     )
 }
+
+// existing solution
+// problem with existing solution
+// new solution
+// how it address the problem
+// implementation details
