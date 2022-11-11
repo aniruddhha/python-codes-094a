@@ -10,11 +10,18 @@ export function LftMn() {
         { ttl : 'Logout', url : '' }, 
     ]
 
-    const customerMenu = customerMenuItems.map( itm => <a href='#'>{itm.ttl}</a> )
+    const adminMenuItems = [ 
+        { ttl : 'Customers', url : '' },
+        { ttl : 'Create Account', url : '' }, 
+        { ttl : 'Balance', url : '' },
+        { ttl : 'Deposit', url : '' }, 
+        { ttl : 'Withdraw', url : '' }, 
+        { ttl : 'Transfer', url : '' }, 
+    ]
 
     return (
         <div className={sty.mn}>
-           {customerMenu}
+           {adminMenuItems.map( itm => <a href='#'>{itm.ttl}</a> )}
         </div>
     )
 }
