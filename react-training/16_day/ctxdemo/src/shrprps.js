@@ -22,6 +22,8 @@ export function AComp(props) {
     return (
         <h1>
             Count In {props.cnt}
+
+         
         </h1>
     )
 }
