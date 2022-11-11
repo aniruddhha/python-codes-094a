@@ -5,7 +5,9 @@ import './index.css';
 import { Modal } from './modal';
 import { ParentComp } from './shrprps';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const rootEl = document.getElementById('root')
+const root = ReactDOM.createRoot(rootEl);
+
 root.render(
     <>
         <h1>Welcome to react</h1>
