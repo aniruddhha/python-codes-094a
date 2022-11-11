@@ -9,7 +9,7 @@ export function ParentComp () {
     return (
         <>
             <div>
-                <AComp cnt={cnt}/>
+                <AComp cnt={cnt}/> { /* const props = { cnt : 0  } */}
             </div>
             <div>
                 <BComp onInc={onInc}/>
@@ -18,10 +18,10 @@ export function ParentComp () {
     )
 }
 
-export function AComp({cnt}) {
+export function AComp(props) {
     return (
         <h1>
-            Count In {cnt}
+            Count In {props.cnt}
         </h1>
     )
 }
