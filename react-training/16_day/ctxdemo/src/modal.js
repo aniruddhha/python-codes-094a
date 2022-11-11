@@ -1,4 +1,5 @@
 import sty from './modal.module.css'
+import PortalReactDOM from 'react-dom'
 
 export function Backdrop() {
     return (
@@ -16,11 +17,15 @@ export function ModalData() {
     )
 }
 
+const modalDv = document.getElementById('modal')
+const prtlBkdp = PortalReactDOM.createPortal(<Backdrop/>, modalDv) 
+const prtlMdlDt = PortalReactDOM.createPortal( <ModalData/>, modalDv) 
+
 export function Modal() {
     return(
         <div>
-            <Backdrop/>
-            <ModalData/>
+           {prtlBkdp}
+           {prtlMdlDt}
         </div>
     )
 }
