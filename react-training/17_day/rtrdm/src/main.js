@@ -57,10 +57,10 @@ export function Dashboard() {
             </h1>
             <div>
                 <p>
-                    <Link to={'contacts'}>Contacts</Link>
+                    <Link to={'/contacts'}>Contacts</Link>
                 </p>
                 <p>
-                    <Link to={'profile'}>Profile</Link>
+                    <Link to={'./profile'}>Profile</Link>
                 </p>
             </div>
             <div>
@@ -80,12 +80,12 @@ export const router = createBrowserRouter([
         element: <Dashboard />,
         children: [
             {
-                path: 'contacts',
+                path: './contacts',
                 element: <h1> Contacts Are Loaded </h1>
             },
             {
-                path: 'profile',
-                element: <h1> Here is the profile </h1>
+                path: './profile',
+                element: <div> Here is the profile </div>,
             }
         ]
     },

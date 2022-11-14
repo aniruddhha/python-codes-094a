@@ -4,6 +4,7 @@ import { Deposit } from '../customer/deposit/deposit'
 
 import sty from './dash.module.css'
 import { Customers } from '../admin/customers/customers'
+import { Outlet } from 'react-router-dom'
 
 export function Dash() {
 
@@ -15,7 +16,7 @@ export function Dash() {
                     <LftMn/>
                 </div>
                 <div className={sty.dvMnCnt}>
-                    <Customers/>
+                  <Outlet/>
                 </div>
             </div>
         </>

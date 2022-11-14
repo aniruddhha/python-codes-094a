@@ -1,12 +1,13 @@
+import { Link } from 'react-router-dom'
 import sty from './lftmn.module.css'
 
 export function LftMn() {
 
     const customerMenuItems = [ 
-        { ttl : 'Balance', url : '' },
-        { ttl : 'Deposit', url : '' }, 
-        { ttl : 'Withdraw', url : '' }, 
-        { ttl : 'Transfer', url : '' }, 
+        { ttl : 'Balance', url : './balance' },
+        { ttl : 'Deposit', url : './deposit' }, 
+        { ttl : 'Withdraw', url : './withdraw' }, 
+        { ttl : 'Transfer', url : './transfer' }, 
         { ttl : 'Logout', url : '' }, 
     ]
 
@@ -21,7 +22,7 @@ export function LftMn() {
 
     return (
         <div className={sty.mn}>
-           {adminMenuItems.map( itm => <a href='#'>{itm.ttl}</a> )}
+           {customerMenuItems.map( itm => <Link to={itm.url}>{itm.ttl}</Link> )}
         </div>
     )
 }

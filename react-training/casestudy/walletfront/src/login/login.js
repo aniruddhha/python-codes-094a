@@ -1,8 +1,14 @@
+import { useNavigate } from 'react-router-dom'
 import styles from './login.module.css'
 
 export function Login() {
 
-    console.log(styles)
+    const navigate = useNavigate()
+
+    const onClkLogin = () => {
+
+        navigate('/dash')
+    }
 
     return (
         <div className={styles.mainDiv}>
@@ -17,7 +23,7 @@ export function Login() {
                 <label className={styles.txt}>Password</label>
                 <input className={styles.bigIp} type='text' placeholder='Password'/>
             </div>
-            <input className={styles.btnLgn} type='button' value='Login'/>
+            <input className={styles.btnLgn} type='button' value='Login' onClick={onClkLogin}/>
         </div>
     )
 }
