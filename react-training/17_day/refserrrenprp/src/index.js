@@ -6,11 +6,12 @@ import { RefDemo } from './refsdemo';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+root.render(<>
   <ErrorBoundry>
-    <RefDemo/>
-    <h1>Hey Hi</h1>
+    <RefDemo />
   </ErrorBoundry>
+  <h1>Hey Hi</h1>
+</>
 );
 
 
