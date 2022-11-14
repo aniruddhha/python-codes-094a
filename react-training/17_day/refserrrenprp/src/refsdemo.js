@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 
-export function RefDemo() {
+export function RefDemo({ num1, num2 }) {
 
     const refNm2 = useRef(null)
 
@@ -9,10 +9,15 @@ export function RefDemo() {
         console.log(refNm2.current)
     }, []) 
 
+    const clk = () => {
+        throw new Error('Bad Data')
+    }
+
     return (
         <div>
-            <input type='text' placeholder="Num1"/>
-            <input type='text'  placeholder="Num2" ref={refNm2}/>
+            <input type='text' placeholder={num1.toUpperCase()}/>
+            <input type='text'  placeholder={num2.toUpperCase()} ref={refNm2}/>
+            <input type='button' value='Error' onClick={clk}  />
         </div>
     )
 }
