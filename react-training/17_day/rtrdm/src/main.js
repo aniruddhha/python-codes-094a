@@ -5,6 +5,7 @@
 
 import {
     createBrowserRouter, 
+    Link, 
     useNavigate
 } from "react-router-dom";
 
@@ -33,7 +34,12 @@ export function User() {
             <h1>
                 Creating new user
             </h1>
-            <a href="/dash">Go to Dashboard</a>
+            <p>
+                <a href="/dash">Go to Dashboard</a>
+            </p>
+            <p>
+                <Link to={'/dash'}>👉 Go to Dashboard</Link>
+            </p>
         </>
     )
 }
