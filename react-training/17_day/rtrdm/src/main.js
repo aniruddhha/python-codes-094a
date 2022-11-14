@@ -1,3 +1,8 @@
+// 1. npx create-react-app mnbmnbmnbmn
+// 2. cd mnbmnbmnbmn
+// 3. npm install react-router-dom localforage match-sorter sort-by
+// 4. npm start
+
 import {
     createBrowserRouter
 } from "react-router-dom";
