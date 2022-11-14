@@ -6,7 +6,8 @@
 import {
     createBrowserRouter, 
     Link, 
-    useNavigate
+    useNavigate,
+    useParams
 } from "react-router-dom";
 
 export function Login() {
@@ -45,9 +46,12 @@ export function User() {
 }
 
 export function Dashboard() {
+
+    const { dashId } = useParams()
+
     return (
         <h1>
-            Admin Dashboard
+            Admin Dashboard {dashId}
         </h1>
     )
 }
@@ -58,11 +62,15 @@ export const router = createBrowserRouter([
         element: <Login />,
     },
     {
-        path: "/dash",
+        path: "/dash/:dashId",
         element: <Dashboard />,
     },
     {
         path: "/user",
         element: <User />,
+    },
+    {
+        path: "*",
+        element: <h1> Bad Route </h1>,
     },
 ]);
