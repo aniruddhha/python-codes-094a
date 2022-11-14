@@ -4,8 +4,9 @@
 // 4. npm start
 
 import {
-    createBrowserRouter, 
-    Link, 
+    createBrowserRouter,
+    Link,
+    Outlet,
     useNavigate,
     useParams
 } from "react-router-dom";
@@ -22,9 +23,9 @@ export function Login() {
                 Trying to Login
             </h1>
             <div>
-                <input type='button' value='Dashboard' onClick={clk}/>
+                <input type='button' value='Dashboard' onClick={clk} />
             </div>
-        
+
         </>
     )
 }
@@ -50,9 +51,22 @@ export function Dashboard() {
     const { dashId } = useParams()
 
     return (
-        <h1>
-            Admin Dashboard {dashId}
-        </h1>
+        <>
+            <h1>
+                Admin Dashboard {dashId}
+            </h1>
+            <div>
+                <p>
+                    <Link to={'contacts'}>Contacts</Link>
+                </p>
+                <p>
+                    <Link to={'profile'}>Profile</Link>
+                </p>
+            </div>
+            <div>
+                <Outlet/>
+            </div>
+        </>
     )
 }
 
@@ -64,6 +78,16 @@ export const router = createBrowserRouter([
     {
         path: "/dash/:dashId",
         element: <Dashboard />,
+        children: [
+            {
+                path: 'contacts',
+                element: <h1> Contacts Are Loaded </h1>
+            },
+            {
+                path: 'profile',
+                element: <h1> Here is the profile </h1>
+            }
+        ]
     },
     {
         path: "/user",
