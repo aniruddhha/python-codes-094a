@@ -16,6 +16,11 @@ export function Car() {
 }
 
 export function Main({ render }) {
-    return render()
+    return (
+        <>
+            {render()}
+            <h1>Hey Hi ss</h1>
+        </>
+    )
 }
 
