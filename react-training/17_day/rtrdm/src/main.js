@@ -4,22 +4,37 @@
 // 4. npm start
 
 import {
-    createBrowserRouter
+    createBrowserRouter, 
+    useNavigate
 } from "react-router-dom";
 
 export function Login() {
+
+    const navigate = useNavigate()
+
+    const clk = () => navigate('/dash')
+
     return (
-        <h1>
-            Trying to Login
-        </h1>
+        <>
+            <h1>
+                Trying to Login
+            </h1>
+            <div>
+                <input type='button' value='Dashboard' onClick={clk}/>
+            </div>
+        
+        </>
     )
 }
 
 export function User() {
     return (
-        <h1>
-            Creating new user
-        </h1>
+        <>
+            <h1>
+                Creating new user
+            </h1>
+            <a href="/dash">Go to Dashboard</a>
+        </>
     )
 }
 
