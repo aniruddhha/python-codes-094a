@@ -3,7 +3,9 @@ table, th, td {
     border-collapse: collapse;
     padding: 8px;
 }
-
+table {
+    margin-top: 24px;
+}
 th {
     background-color: azure;
 }
@@ -13,6 +15,11 @@ th {
     height: 100%;
     
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.crtCont {
+    display: flex;   
 }
