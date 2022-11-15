@@ -5,7 +5,7 @@ class AppUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = AppUser
         # fields = '__all__'
-        exclude = ('txn_dt', 'created', 'password')
+        exclude = ('txn_dt', 'created')
 
     def validate(self, data):
         # modify this function for validations
