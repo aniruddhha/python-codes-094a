@@ -1,8 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { json, useNavigate } from 'react-router-dom'
 import styles from './login.module.css'
 
+import { AppCtx } from '../ctx/appctx'
+
 export function Login() {
+
+    const ctx = useContext(AppCtx)
 
     const [errMsg, setErrMsg] = useState( { sts : true, msg : 'Invalid Form'})
 
@@ -42,6 +46,7 @@ export function Login() {
             })
             .then(json => {
                 navigate('/dash')
+                ctx.setSt(json)
             })
             .catch( errRes => {
                 errRes.json().then( e => {

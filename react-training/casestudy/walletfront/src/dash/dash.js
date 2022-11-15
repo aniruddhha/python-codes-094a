@@ -6,8 +6,14 @@ import sty from './dash.module.css'
 import { Customers } from '../admin/customers/customers'
 import { Outlet } from 'react-router-dom'
 import { Transfer } from '../admin/transfer/transfer'
+import { AppCtx } from '../ctx/appctx'
+import { useContext } from 'react'
 
 export function Dash() {
+
+    const ctx = useContext(AppCtx)
+
+    console.log(ctx.st)
 
     return (
         <>

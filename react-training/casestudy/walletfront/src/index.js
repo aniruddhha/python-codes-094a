@@ -13,24 +13,42 @@ import { Deposit } from './customer/deposit/deposit';
 import { Withdraw } from './customer/withdraw/withdraw'
 import { Transfer } from './customer/transfer/transfer'
 
+import { AppCtx } from './ctx/appctx';
+import { useState } from 'react';
+
 const router = createBrowserRouter([
-  { path : '/',  element : <Login/> },
-  { 
-    path : '/dash',  
-    element : <Dash/>,
-    children : [
-      { path : 'customers', element : <Customers/>  },
-      { path : 'balance', element : <Balance/>  },
-      { path : 'deposit', element : <Deposit/>  },
-      { path : 'withdraw', element : <Withdraw/>  },
-      { path : 'transfer', element : <Transfer/>  },
+  { path: '/', element: <Login /> },
+  {
+    path: '/dash',
+    element: <Dash />,
+    children: [
+      { path: 'customers', element: <Customers /> },
+      { path: 'balance', element: <Balance /> },
+      { path: 'deposit', element: <Deposit /> },
+      { path: 'withdraw', element: <Withdraw /> },
+      { path: 'transfer', element: <Transfer /> },
     ]
   }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+function Main() {
+
+  const [st, setSt] = useState({})
+
+  const sharedObj = {
+    st, setSt
+  }
+
+  return (
+    <AppCtx.Provider value={sharedObj}>
+      <RouterProvider router={router} />
+    </AppCtx.Provider>
+  )
+}
 root.render(
- <RouterProvider router={router}/>
+  <Main />
 );
 
 
