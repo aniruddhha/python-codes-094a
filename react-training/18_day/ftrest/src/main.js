@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import sty from './main.module.css'
 
 
-export function CreateUser() {
+export function CreateUser({ onSub }) {
 
     const ob1 = { ['abk'] : '134'  }
     const ob2 = { abk : '134' }
@@ -50,7 +50,10 @@ export function CreateUser() {
             }
         })
             .then(res => res.json())
-            .then(json => console.log(json))
+            .then(json => {
+                console.log(json)
+                onSub(json)
+            })
     }
 
     return (
@@ -71,7 +74,7 @@ export function CreateUser() {
     )
 }
 
-export function UserTable() {
+export function UserTable({ sts }) {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
@@ -80,7 +83,7 @@ export function UserTable() {
             .then(json => {
                 setUsers(json)
             })
-    }, [])
+    }, [sts])
 
     return (
 
@@ -120,10 +123,12 @@ export function UserTable() {
 }
 export function Main() {
 
+    const [sts, setSts] = useState({})
+
     return (
         <div className={sty.cont}>
-            <CreateUser />
-            <UserTable />
+            <CreateUser onSub={setSts}/>
+            <UserTable sts={sts}/>
         </div>
     )
 }
