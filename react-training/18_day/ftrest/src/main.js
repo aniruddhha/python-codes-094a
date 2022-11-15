@@ -5,15 +5,28 @@ import sty from './main.module.css'
 
 export function CreateUser() {
 
-    const user = {
+    const ob1 = { ['abk'] : '134'  }
+    const ob2 = { abk : '134' }
+
+
+    const [user, setUser] = useState({
         user_name: "wow",
         "role": 0,
         "balance": 10,
-        "is_active": false,
-        "is_blocked": false
-    }
+        'is_active' : false,
+        is_blocked : true
+    })
+
+    // const onUsCh = e => setUser( { ...user, user_name : e.target.value  }  )
+    // const onPsCh = e => setUser( { ...user, password : e.target.value  }  )
+    // const onRlCh = e => setUser( { ...user, role : e.target.value  }  )
+    // const onBlCh = e => setUser( { ...user, balance : e.target.value  }  )
+
+    const onIpCh = e => setUser( { ...user, [e.target.name] : e.target.value  } )
 
     const onClk = () => {
+
+        console.log(user)
 
         fetch('http://localhost:8000/wallet/', {
             method: 'post',
@@ -28,13 +41,13 @@ export function CreateUser() {
 
     return (
         <div className={sty.crtCont}>
-            <input type='text' placeholder='User Name' />
-            <input type='text' placeholder='Password' />
-            <select>
+            <input name="user_name" type='text' placeholder='User Name' onChange={onIpCh}/>
+            <input name="password" type='text' placeholder='Password' onChange={onIpCh}/>
+            <select name="role" onChange={onIpCh}>
                 <option value={0}>Admin</option>
                 <option value={1}>User</option>
             </select>
-            <input type='number' placeholder='Balance' />
+            <input name="balance" type='number' placeholder='Balance' onChange={onIpCh}/>
             <input type='button' value='Okay' onClick={onClk} />
         </div>
     )
