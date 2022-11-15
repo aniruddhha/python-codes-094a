@@ -15,7 +15,7 @@ class LoginViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = []
     serializer_class = LoginSerializer
 
-    @action(detail=True, methods=['post'], url_path=r'login')
+    @action(detail=True, methods=['post'], url_path=r'creds')
     def login(self, request, *args, **kwargs):
         creds = request.data
 

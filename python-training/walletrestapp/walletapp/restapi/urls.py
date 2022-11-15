@@ -11,7 +11,7 @@ from .login.loginviewset import (
 )
 
 router = DefaultRouter()
-router.register(r'', LoginViewSet, basename='login')
+router.register(r'auth', LoginViewSet, basename='auth')
 router.register(r'wallet', WalletViewSet, basename='wallet')
 
 urlpatterns = [

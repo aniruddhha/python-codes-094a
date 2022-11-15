@@ -33,7 +33,7 @@ export function Login() {
 
         if (Object.values(er).every(el => el == false)) {
 
-            fetch('http://localhost:8000/login/login/', {
+            fetch('http://localhost:8000/auth/login/creds/', {
                 method: 'post',
                 body: JSON.stringify(creds),
                 headers : {
