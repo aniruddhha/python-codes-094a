@@ -22,11 +22,9 @@ export function CreateUser({ onSub }) {
 
 
     const [user, setUser] = useState({
-        user_name: undefined,
-        "role": undefined,
-        "balance": undefined,
-        'is_active' : false,
-        is_blocked : true
+        user_name: 'abcmnmmm',
+        "role": 1,
+        "balance": 90,
     })
 
     // const onUsCh = e => setUser( { ...user, user_name : e.target.value  }  )
@@ -40,8 +38,6 @@ export function CreateUser({ onSub }) {
 
     const onClk = () => {
 
-        console.log(user)
-
         fetch('http://localhost:8000/wallet/', {
             method: 'post',
             body: JSON.stringify(user), // converts js object to json
@@ -49,10 +45,18 @@ export function CreateUser({ onSub }) {
                 'Content-Type': 'application/json'
             }
         })
-            .then(res => res.json())
+            .then(res =>  {
+                console.log(res)
+                if(!res.ok) return Promise.reject(res)
+                return res.json()
+            })
             .then(json => {
                 console.log(json)
-                onSub(json)
+                // onSub(json)
+            }).catch( errRes => {
+                console.log(errRes)
+                console.log('Err is ') 
+                errRes.json().then( json => console.log(json) )
             })
     }
 
@@ -81,7 +85,7 @@ export function UserTable({ sts }) {
         fetch('http://localhost:8000/wallet/')
             .then(res => res.json()) // convert response to josn
             .then(json => {
-                setUsers(json)
+                // setUsers(json)
             })
     }, [sts])
 
