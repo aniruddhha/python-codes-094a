@@ -8,11 +8,23 @@ export function CreateUser() {
     const ob1 = { ['abk'] : '134'  }
     const ob2 = { abk : '134' }
 
+    // const [userName, setUserName] = useState()
+    // const [password, setPassword] = useState()
+    // const [role, setRole] = useState()
+    // const [balance, setBalance] = useState()
+    // const [isActive, setIsActive] = useState()
+    // const [isBlocked, setIsBlocked] = useState()
+
+    // const onUsCh = e => setUserName(e.target.value)
+    // const onPsCh = e => setPassword(e.target.value)
+    // const onRlCh = e => setRole(e.target.value)
+    // const onBlCh = e => setBalance(e.target.balance)
+
 
     const [user, setUser] = useState({
-        user_name: "wow",
-        "role": 0,
-        "balance": 10,
+        user_name: undefined,
+        "role": undefined,
+        "balance": undefined,
         'is_active' : false,
         is_blocked : true
     })
@@ -22,7 +34,9 @@ export function CreateUser() {
     // const onRlCh = e => setUser( { ...user, role : e.target.value  }  )
     // const onBlCh = e => setUser( { ...user, balance : e.target.value  }  )
 
+
     const onIpCh = e => setUser( { ...user, [e.target.name] : e.target.value  } )
+    const onChkChng = e => setUser( { ...user,  [e.target.name] : e.target.checked ? true : false })
 
     const onClk = () => {
 
@@ -48,6 +62,10 @@ export function CreateUser() {
                 <option value={1}>User</option>
             </select>
             <input name="balance" type='number' placeholder='Balance' onChange={onIpCh}/>
+
+            <span>Active <input name="is_active" type='checkbox' onChange={onChkChng}/></span>
+            <span>Blocked <input name="is_blocked" type='checkbox' onChange={onChkChng}/></span>
+
             <input type='button' value='Okay' onClick={onClk} />
         </div>
     )
