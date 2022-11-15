@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class AppUser(models.Model):
-    user_name = models.CharField(max_length=200)
+    user_name = models.CharField(max_length=200, unique=True)
     password = models.CharField(max_length=200)
     role = models.IntegerField()
     balance = models.DecimalField(decimal_places = 3, max_digits=10)

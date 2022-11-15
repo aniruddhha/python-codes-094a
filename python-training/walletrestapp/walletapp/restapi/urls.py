@@ -6,7 +6,12 @@ from .views import (
     WalletViewSet
 )
 
+from .login.loginviewset import (
+    LoginViewSet
+)
+
 router = DefaultRouter()
+router.register(r'', LoginViewSet, basename='login')
 router.register(r'wallet', WalletViewSet, basename='wallet')
 
 urlpatterns = [

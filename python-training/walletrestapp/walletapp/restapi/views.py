@@ -48,15 +48,7 @@ class WalletViewSet(viewsets.ModelViewSet):
         print(sz.data)
         return Response(sz.errors)
 
-    @action(detail=True, methods=['post'], url_path=r'login')
-    def login(self, request, *args, **kwargs):
-        creds = request.data
-        print(creds)
-        user = AppUser.objects.get(user_name= creds['user_name'], password = creds['password'])
-        print(user)
-        if user == None:
-            return Response('User Not Found', status=status.HTTP_404_NOT_FOUND )
-        return  Response({ 'id' : user.id, 'role' : user.role  })
+  
 
         
 
