@@ -1,11 +1,14 @@
 import sty from './transfer.module.css'
 
-import { createContext, useState } from 'react'
+import { useContext, useState } from 'react'
+import { AppCtx } from '../../ctx/appctx'
 
 export function AdminTransfer() {
+
+    const ctx = useContext(AppCtx)
+
     const [src, setSrc] = useState()
     const [dst, setDst] = useState()
-
     const [amt, setAmt] = useState()
 
     const [srcDt, setSrcDt] = useState({
@@ -20,6 +23,8 @@ export function AdminTransfer() {
         is_active: false,
         is_blocked: true
     })
+
+    const [errs, setErrs] = useState('Invalid Data')
 
     const onSrcCh = e => setSrc(e.target.value)
     const onDstCh = e => setDst(e.target.value)
@@ -46,13 +51,45 @@ export function AdminTransfer() {
     }
 
     const onTrans = () => {
+
+        if(src == dst) {
+            setErrs('Invalid Transfer')
+            return
+        }
+
+        if(src <=0 ) {
+            setErrs('Invalid Source Id')
+            return
+        }
+
+        if(dst <= 0 ) {
+            setErrs('Invalid Target Id')
+            return
+        }
+        
+        // if(!srcDt.is_active && srcDt.is_blocked) {
+        //     setErrs('Source is blocked or inactive')
+
+        //     return
+        // }
+
+        // if(!dstDt.is_active && dstDt.is_blocked) {
+        //     setErrs('Target is blocked or inactive')
+        //     return
+        // }
+
+        if(amt <= 0 || amt > 10_000_000) {
+            setErrs('Invalid Amount')
+            return
+        }
+
         fetch('http://localhost:8000/transfer/transfer/', {
             method: 'put',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                adm: 1,
+                adm: ctx.st.id,
                 src: src,
                 dst: dst,
                 amt: amt
@@ -73,6 +110,8 @@ export function AdminTransfer() {
         <>
             <h1> TRANSFER </h1>
             <hr />
+
+            <p>{ errs }</p>
 
             <div className={sty.cont}>
                 <div className={sty.mnCont}>
