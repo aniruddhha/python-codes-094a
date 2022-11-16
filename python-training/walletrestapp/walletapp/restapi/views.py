@@ -17,10 +17,11 @@ from .serializers import (
 
 # Create your views here.
 class WalletViewSet(viewsets.ModelViewSet):
+
     queryset = AppUser.objects.all()
     serializer_class = AppUserSerializer
 
-    @action(detail=False, methods=['put'], url_path=r'deposit' )
+    @action(detail=True, methods=['put'], url_path=r'deposit' )
     def deposit(self, request, pk):
         
         dt = request.data
@@ -47,6 +48,7 @@ class WalletViewSet(viewsets.ModelViewSet):
         print(sz.errors)
         print(sz.data)
         return Response(sz.errors)
+
 
   
 

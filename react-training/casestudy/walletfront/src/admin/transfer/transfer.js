@@ -6,6 +6,8 @@ export function AdminTransfer() {
     const [src, setSrc] = useState()
     const [dst, setDst] = useState()
 
+    const [amt, setAmt] = useState()
+
     const [srcDt, setSrcDt] = useState({ 
         user_name : '',
         balance : 0,
@@ -39,6 +41,10 @@ export function AdminTransfer() {
         }) // where we decide res ok not or okay
         .then( json => setDstDt(json)  ) // if okay
         .catch(err => {}) // if not okay
+    }
+
+    const onTrans = () => {
+        
     }
 
     return (
