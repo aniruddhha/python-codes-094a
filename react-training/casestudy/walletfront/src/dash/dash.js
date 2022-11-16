@@ -23,7 +23,7 @@ export function Dash() {
                     <LftMn/>
                 </div>
                 <div className={sty.dvMnCnt}>
-                  <Transfer/>
+                  <Outlet/>
                 </div>
             </div>
         </>

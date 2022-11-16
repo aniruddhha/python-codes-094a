@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { json, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import styles from './login.module.css'
 
 import { AppCtx } from '../ctx/appctx'
@@ -45,8 +45,8 @@ export function Login() {
                 return res.json() 
             })
             .then(json => {
-                navigate('/dash')
                 ctx.setSt(json)
+                navigate('/dash')
             })
             .catch( errRes => {
                 errRes.json().then( e => {
