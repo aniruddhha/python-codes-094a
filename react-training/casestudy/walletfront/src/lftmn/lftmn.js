@@ -18,19 +18,19 @@ export function LftMn() {
     ]
 
     const adminMenuItems = [ 
-        { ttl : 'Customers', url : '' },
+        { ttl : 'Customers', url : './customers' },
         { ttl : 'Create Account', url : '' }, 
         { ttl : 'Balance', url : '' },
         { ttl : 'Deposit', url : '' }, 
         { ttl : 'Withdraw', url : '' }, 
-        { ttl : 'Transfer', url : '' }, 
+        { ttl : 'Transfer', url : './admintransfer' }, 
     ]
 
     const mn = (ctx.st.role == 1) ? adminMenuItems : customerMenuItems
 
     return (
         <div className={sty.mn}>
-           {mn.map( itm => <Link to={itm.url}>{itm.ttl}</Link> )}
+           {mn.map( itm => <Link key={itm.ttl} to={itm.url}>{itm.ttl}</Link> )}
         </div>
     )
 }

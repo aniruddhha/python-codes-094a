@@ -12,6 +12,7 @@ import { Balance } from './customer/balance/balance';
 import { Deposit } from './customer/deposit/deposit';
 import { Withdraw } from './customer/withdraw/withdraw'
 import { Transfer } from './customer/transfer/transfer'
+import { AdminTransfer } from './admin/transfer/transfer'
 
 import { AppCtx } from './ctx/appctx';
 import { useState } from 'react';
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
       { path: 'deposit', element: <Deposit /> },
       { path: 'withdraw', element: <Withdraw /> },
       { path: 'transfer', element: <Transfer /> },
+      { path : 'admintransfer', element : <AdminTransfer/> }
     ]
   }
 ])

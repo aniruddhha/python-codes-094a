@@ -37,12 +37,12 @@ export function Login() {
                 method: 'post',
                 body: JSON.stringify(creds),
                 headers : {
-                    'Content-Type' : 'application/json'
+                    'Content-Type' : 'application/json' // what type of content I am sending
                 }
             })
             .then( res =>  {
-                if(!res.ok) return Promise.reject(res)
-                return res.json() 
+                if(!res.ok) return Promise.reject(res) // new promise object with rejected status
+                return res.json()  // Promise.resolve(res.json()) new promise object with fullfilled status
             })
             .then(json => {
                 ctx.setSt(json.dt)
@@ -51,7 +51,7 @@ export function Login() {
             .catch( errRes => {
                 errRes.json().then( e => {
                     console.log(e)
-                   setErrMsg({ sts : true, msg :  e.err.non_field_errors[0]})
+                    setErrMsg({ sts : true, msg :  e.err.non_field_errors[0]})
                 } )
             })
         } else {
