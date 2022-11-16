@@ -45,7 +45,7 @@ export function Login() {
                 return res.json() 
             })
             .then(json => {
-                ctx.setSt(json)
+                ctx.setSt(json.dt)
                 navigate('/dash')
             })
             .catch( errRes => {

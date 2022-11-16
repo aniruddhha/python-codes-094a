@@ -1,7 +1,13 @@
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AppCtx } from '../ctx/appctx'
 import sty from './lftmn.module.css'
 
 export function LftMn() {
+
+    const ctx = useContext(AppCtx)
+
+    console.log(ctx)
 
     const customerMenuItems = [ 
         { ttl : 'Balance', url : './balance' },
@@ -20,9 +26,11 @@ export function LftMn() {
         { ttl : 'Transfer', url : '' }, 
     ]
 
+    const mn = (ctx.st.role == 1) ? adminMenuItems : customerMenuItems
+
     return (
         <div className={sty.mn}>
-           {customerMenuItems.map( itm => <Link to={itm.url}>{itm.ttl}</Link> )}
+           {mn.map( itm => <Link to={itm.url}>{itm.ttl}</Link> )}
         </div>
     )
 }
