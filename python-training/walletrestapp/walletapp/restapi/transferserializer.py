@@ -17,19 +17,29 @@ class AdminTransferSerializer(serializers.Serializer):
 
     def validate(self, data):
 
-        srcUsr = AppUser.objects.get(pk = data['src'])
-        dstUsr = AppUser.objects.get(pk = data['dst'])
+        src_usr = AppUser.objects.get(pk = data['src'])
+        dst_usr = AppUser.objects.get(pk = data['dst'])
 
-        srcBal = srcUsr.balance
+        # if not src_usr.is_active:
+        #      raise serializers.ValidationError('Inactive Source User')
+        # if src_usr.is_blocked :
+        #     raise serializers.ValidationError('Source User is Blocked')
 
-        if srcBal < data['amt'] :
+        # if not dst_usr.is_active:
+        #      raise serializers.ValidationError('Inactive Target User')
+        # if dst_usr.is_blocked :
+        #     raise serializers.ValidationError('Target User is Blocked')
+
+        src_bal = src_usr.balance
+
+        if src_bal < data['amt'] :
             raise serializers.ValidationError('Insufficient Balance')
 
-        srcUsr.balance = srcBal - data['amt']
-        srcUsr.save()
+        src_usr.balance = src_bal - data['amt']
+        src_usr.save()
 
-        dstUsr.balance = dstUsr.balance + data['amt']
-        dstUsr.save()
+        dst_usr.balance = dst_usr.balance + data['amt']
+        dst_usr.save()
 
         return data
 
