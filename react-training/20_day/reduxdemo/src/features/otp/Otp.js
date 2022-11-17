@@ -2,7 +2,7 @@ import { useState } from "react"
 import styled from "styled-components"
 
 import { useSelector, useDispatch } from 'react-redux';
-import { verify } from "./otpSlice"; 
+import { verify,  verifyWithOtp } from "./otpSlice"; 
 import { selectIsVerified } from "./otpSlice"; 
 
 const CenteredDiv = styled.div`
@@ -16,6 +16,7 @@ const AwesomeLabel = styled.label`
     text-align: center;
     background-color: blue;
     color: white;
+    padding: 8px;
 `
 
 export function Otp() {
@@ -26,7 +27,8 @@ export function Otp() {
     const [otpVal, setOtpVal] = useState()
     const onIpCh = e => setOtpVal(e.target.value)
 
-    const onClk = () => { dispatch(verify()) }
+    // const onClk = () => { dispatch(verify()) }
+    const onClk = () => { dispatch(verifyWithOtp(otpVal)) }
 
     return(
         <CenteredDiv>
