@@ -21,7 +21,6 @@ const CenteredDiv = styled.div`
     align-items: center;
     height: 100vh;
 `
-
 const Column = styled.div`
     display: flex;
     flex-direction: column;
