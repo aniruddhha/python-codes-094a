@@ -15,7 +15,7 @@ export const otpSlice = createSlice({
         },
         verifyWithOtp: (state, action) => {
             console.log(action)
-            
+
             if(action.payload > 100)  state.isVerified = true
             else state.isVerified = false
         }
