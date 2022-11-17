@@ -6,7 +6,8 @@ const initialState = {
 
 export const userApiThunk = createAsyncThunk(
     'apitable/fetchUsers',
-    () => fetch('https://reqres.in/api/users').then(res => res.json())
+    () => fetch('https://reqres.in/api/users')
+          .then(res => res.ok ? res.json() : Promise.reject(res) )
 )
 
 export const apiTableSlice = createSlice({
@@ -20,7 +21,7 @@ export const apiTableSlice = createSlice({
             .addCase(userApiThunk.fulfilled, (state, action) => {
                 console.log('still wating for data')
                 console.log(action)
-                state = action.payload.data
+                state.users = action.payload.data
             })
             .addCase(userApiThunk.rejected, (state, action) => {
                 console.log('problem in loading data')
