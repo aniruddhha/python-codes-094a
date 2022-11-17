@@ -27,13 +27,11 @@ const MenuItemTitle = styled.div`
     justify-content: flex-start;
     align-items: center;
 `
-
 const SubMenuContainer = styled.div`
     width: 100%;
     background-color: beige;
     border-top: 1px solid black;
 `
-
 const Left = styled.div`
     width:20% ;
     height: 100%;
