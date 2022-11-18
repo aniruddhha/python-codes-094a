@@ -57,8 +57,8 @@ export function UiCalc() {
             <StsLabel>Calculator</StsLabel>
             <StsLabel>{result}</StsLabel>
             <IpCont>
-                <Ip type='number' placeholder='Num1' onChange={onNum1Ch}/>
-                <StsLabel>✅</StsLabel>
+                <Ip data-testid='num1' type='number' placeholder='Num1' onChange={onNum1Ch}/>
+                <StsLabel data-testid='num1Sts'>{ (num1 < 34 || num1 > 78) ?  '❌' : '✅' }</StsLabel>
             </IpCont>
             <IpCont>
                 <Ip type='number' placeholder='Num2' onChange={onNum2Ch}/>
