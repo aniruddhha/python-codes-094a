@@ -55,14 +55,14 @@ export function UiCalc() {
     return (
         <CenteredDiv>
             <StsLabel>Calculator</StsLabel>
-            <StsLabel>{result}</StsLabel>
+            <StsLabel data-testid='result'>{result}</StsLabel>
             <IpCont>
                 <Ip data-testid='num1' type='number' placeholder='Num1' onChange={onNum1Ch}/>
                 <StsLabel data-testid='num1Sts'>{ (num1 < 34 || num1 > 78) ?  '❌' : '✅' }</StsLabel>
             </IpCont>
             <IpCont>
-                <Ip type='number' placeholder='Num2' onChange={onNum2Ch}/>
-                <StsLabel>✅</StsLabel>
+                <Ip data-testid='num2' type='number' placeholder='Num2' onChange={onNum2Ch}/>
+                <StsLabel data-testid='num2Sts'>{ (num2 > 0) ? '✅' : '❌'}</StsLabel>
             </IpCont>
             <CalcButton onClick={onAddClk}>Addition</CalcButton>
         </CenteredDiv>
