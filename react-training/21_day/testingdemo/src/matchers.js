@@ -18,3 +18,9 @@ export function getMeNumber() {
 export function getMeString() {
     return 'abc is abc and not pqr'
 }
+
+export function getMeException(num) {
+    if(num > 50) throw new Error('Bad Data')
+
+    return num
+}

@@ -2,7 +2,8 @@ import {
     giveMeNullObj, 
     giveMeObj,
     getMeNumber,
-    getMeString
+    getMeString,
+    getMeException
 } from './matchers'
 
 test ('check object equality', () => {
@@ -31,4 +32,10 @@ test('string checking', () => {
     const str = getMeString()
 
     expect(str).toMatch('abc is abc and not pqr')
+})
+
+test('exception testing', () => {
+    expect(() => getMeException(78)).toThrow();
+    expect(() => getMeException(78)).toThrow(Error);
+    expect(() => getMeException(78)).toThrow('Bad Data');
 })
