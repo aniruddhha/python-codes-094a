@@ -18,7 +18,7 @@ import {
     compareItems,
 } from '@tanstack/match-sorter-utils'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const sty = {
     display: 'flex',
@@ -194,8 +194,6 @@ export function AppTable() {
                     ))}
                 </tbody>
             </table>
-
-            <pre>{JSON.stringify(table.getState(), null, 2)}</pre>
         </div>
     )
 }
@@ -209,15 +207,16 @@ export function Filter({ column, table }) {
 
     const sortedUniqueValues = Array.from(column.getFacetedUniqueValues().keys()).sort()
 
-    console.log(columnFilterValue)
+    useEffect( () => {
+
+        console.log(sortedUniqueValues)
+        console.log(columnFilterValue)
+    }, [columnFilterValue, sortedUniqueValues])
+
+
     return (
         <>
-            <input type='text' value={columnFilterValue && columnFilterValue.target.value} onChange={ch => column.setFilterValue(ch)} />
-            <datalist id={column.id + 'list'}>
-                {sortedUniqueValues.slice(0, 5000).map((value) => (
-                    <option value={[value, value]} key={value} />
-                ))}
-            </datalist>
+            <input type='text' onChange={ch => column.setFilterValue([ch.target.value])} />
         </>
     )
 }
