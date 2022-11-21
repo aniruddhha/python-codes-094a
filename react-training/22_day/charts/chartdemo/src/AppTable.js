@@ -145,12 +145,7 @@ export function AppTable() {
         getSortedRowModel: getSortedRowModel(),
         getFacetedRowModel: getFacetedRowModel(),
         getFacetedUniqueValues: getFacetedUniqueValues(),
-       
         onColumnFiltersChange: setColumnFilters,
-      
-        debugTable: true,
-        debugHeaders: true,
-        debugColumns: true,
     })
 
     return (
@@ -169,7 +164,7 @@ export function AppTable() {
                                         )}
                                     {header.column.getCanFilter() ? (
                                         <div>
-                                            <Filter column={header.column} table={table} />
+                                            <Filter column={header.column} />
                                         </div>
                                     ) : null}
                                 </th>
@@ -198,22 +193,7 @@ export function AppTable() {
     )
 }
 
-export function Filter({ column, table }) {
-    const firstValue = table
-        .getPreFilteredRowModel()
-        .flatRows[0]?.getValue(column.id)
-
-    const columnFilterValue = column.getFilterValue() || ''
-
-    const sortedUniqueValues = Array.from(column.getFacetedUniqueValues().keys()).sort()
-
-    useEffect( () => {
-
-        console.log(sortedUniqueValues)
-        console.log(columnFilterValue)
-    }, [columnFilterValue, sortedUniqueValues])
-
-
+export function Filter({ column }) {
     return (
         <>
             <input type='text' onChange={ch => column.setFilterValue([ch.target.value])} />
