@@ -3,7 +3,29 @@ import {
     flexRender,
     getCoreRowModel,
     useReactTable,
+    getFilteredRowModel,
+    getFacetedRowModel,
+    getFacetedUniqueValues,
+    getFacetedMinMaxValues,
+    getSortedRowModel,
+    sortingFns
+
 } from '@tanstack/react-table'
+
+import {
+    RankingInfo,
+    rankItem,
+    compareItems,
+} from '@tanstack/match-sorter-utils'
+
+import { useState } from 'react'
+
+const sty = {
+    display: 'flex',
+    'justifyContent': 'center',
+    'alignItems': 'center',
+    'marginTop': '3em'
+}
 
 const data = [
     {
@@ -32,50 +54,107 @@ const data = [
     },
 ]
 
+const fuzzyFilter = (row, columnId, value, addMeta) => {
+    // Rank the item
+    const itemRank = rankItem(row.getValue(columnId), value)
+
+    // Store the itemRank info
+    addMeta({
+        itemRank,
+    })
+
+    // Return if the item should be filtered in/out
+    return itemRank.passed
+}
+
+const fuzzySort = (rowA, rowB, columnId) => {
+    let dir = 0
+
+    // Only sort by rank if the column has ranking information
+    if (rowA.columnFiltersMeta[columnId]) {
+        dir = compareItems(
+            rowA.columnFiltersMeta[columnId].itemRank,
+            rowB.columnFiltersMeta[columnId].itemRank
+        )
+    }
+
+    // Provide an alphanumeric fallback for when the item ranks are equal
+    return dir === 0 ? sortingFns.alphanumeric(rowA, rowB, columnId) : dir
+}
+
 const columnHelper = createColumnHelper()
 
 const columns = [
     columnHelper.accessor('firstName', {
         cell: info => info.getValue(),
         footer: info => info.column.id,
+        header: () => <span style={{ padding: '1em' }}>First Name</span>,
+        filterFn: 'fuzzy',
     }),
     columnHelper.accessor(row => row.lastName, {
         id: 'lastName',
         cell: info => <i>{info.getValue()}</i>,
         header: () => <span>Last Name</span>,
         footer: info => info.column.id,
+        filterFn: 'fuzzy',
+        sortingFn: fuzzySort,
     }),
     columnHelper.accessor('age', {
-        header: () => 'Age',
+        header: () => <span>Age</span>,
         cell: info => info.renderValue(),
         footer: info => info.column.id,
+        filterFn: 'fuzzy',
+        sortingFn: fuzzySort,
+
     }),
     columnHelper.accessor('visits', {
         header: () => <span>Visits</span>,
         footer: info => info.column.id,
+        filterFn: 'fuzzy',
+        sortingFn: fuzzySort,
     }),
     columnHelper.accessor('status', {
-        header: 'Status',
+        header: <span>'Status'</span>,
         footer: info => info.column.id,
+        filterFn: 'fuzzy',
+        sortingFn: fuzzySort,
     }),
     columnHelper.accessor('progress', {
-        header: 'Profile Progress',
+        header: <span>Profile Progress</span>,
         footer: info => info.column.id,
+        filterFn: 'fuzzy',
+        sortingFn: fuzzySort,
     }),
 ]
 
-
-
 export function AppTable() {
+
+    const [columnFilters, setColumnFilters] = useState([])
 
     const table = useReactTable({
         data,
         columns,
+        state: {
+            columnFilters
+        },
+        filterFns: {
+            fuzzy: fuzzyFilter
+        },
         getCoreRowModel: getCoreRowModel(),
+        getFilteredRowModel: getFilteredRowModel(),
+        getSortedRowModel: getSortedRowModel(),
+        getFacetedRowModel: getFacetedRowModel(),
+        getFacetedUniqueValues: getFacetedUniqueValues(),
+       
+        onColumnFiltersChange: setColumnFilters,
+      
+        debugTable: true,
+        debugHeaders: true,
+        debugColumns: true,
     })
 
     return (
-        <div>
+        <div style={sty} >
             <table>
                 <thead>
                     {table.getHeaderGroups().map(headerGroup => (
@@ -88,6 +167,11 @@ export function AppTable() {
                                             header.column.columnDef.header,
                                             header.getContext()
                                         )}
+                                    {header.column.getCanFilter() ? (
+                                        <div>
+                                            <Filter column={header.column} table={table} />
+                                        </div>
+                                    ) : null}
                                 </th>
                             ))}
                         </tr>
@@ -98,7 +182,12 @@ export function AppTable() {
                         <tr key={row.id}>
                             {row.getVisibleCells().map(cell => (
                                 <td key={cell.id}>
-                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                    {
+                                        flexRender(
+                                            cell.column.columnDef.cell,
+                                            cell.getContext()
+                                        )
+                                    }
                                 </td>
                             ))}
                         </tr>
@@ -106,6 +195,29 @@ export function AppTable() {
                 </tbody>
             </table>
 
+            <pre>{JSON.stringify(table.getState(), null, 2)}</pre>
         </div>
+    )
+}
+
+export function Filter({ column, table }) {
+    const firstValue = table
+        .getPreFilteredRowModel()
+        .flatRows[0]?.getValue(column.id)
+
+    const columnFilterValue = column.getFilterValue() || ''
+
+    const sortedUniqueValues = Array.from(column.getFacetedUniqueValues().keys()).sort()
+
+    console.log(columnFilterValue)
+    return (
+        <>
+            <input type='text' value={columnFilterValue && columnFilterValue.target.value} onChange={ch => column.setFilterValue(ch)} />
+            <datalist id={column.id + 'list'}>
+                {sortedUniqueValues.slice(0, 5000).map((value) => (
+                    <option value={[value, value]} key={value} />
+                ))}
+            </datalist>
+        </>
     )
 }
