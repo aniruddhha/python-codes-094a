@@ -1,10 +1,9 @@
 import './App.css';
-import { AppBarChart } from './AppBarChart';
+import { AppTable } from './AppTable'
 
 function App() {
   return (
-    <AppBarChart>
-    </AppBarChart>
+    <AppTable/>
   );
 }
 
